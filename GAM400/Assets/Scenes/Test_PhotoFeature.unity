@@ -622,7 +622,6 @@ GameObject:
   - component: {fileID: 720606667}
   - component: {fileID: 720606666}
   - component: {fileID: 720606665}
-  - component: {fileID: 720606664}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Sliceable
@@ -645,23 +644,6 @@ Transform:
   m_Father: {fileID: 242414613}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &720606664
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 720606662}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8622742d6425bb64bb2c96bc76a2a692, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _isSolid: 1
-  _reverseWindTriangles: 0
-  _useGravity: 0
-  _shareVertices: 0
-  _smoothVertices: 0
 --- !u!64 &720606665
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1391,7 +1373,6 @@ GameObject:
   - component: {fileID: 1145524990}
   - component: {fileID: 1145524989}
   - component: {fileID: 1145524988}
-  - component: {fileID: 1145524992}
   m_Layer: 0
   m_Name: Cube (1)
   m_TagString: Sliceable
@@ -1485,23 +1466,6 @@ Transform:
   m_Father: {fileID: 242414613}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1145524992
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1145524987}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8622742d6425bb64bb2c96bc76a2a692, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _isSolid: 1
-  _reverseWindTriangles: 0
-  _useGravity: 0
-  _shareVertices: 0
-  _smoothVertices: 0
 --- !u!1 &1165039658
 GameObject:
   m_ObjectHideFlags: 0
@@ -1654,7 +1618,6 @@ GameObject:
   - component: {fileID: 1324489309}
   - component: {fileID: 1324489308}
   - component: {fileID: 1324489307}
-  - component: {fileID: 1324489311}
   m_Layer: 0
   m_Name: Cube (2)
   m_TagString: Sliceable
@@ -1748,23 +1711,6 @@ Transform:
   m_Father: {fileID: 242414613}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1324489311
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1324489306}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8622742d6425bb64bb2c96bc76a2a692, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _isSolid: 1
-  _reverseWindTriangles: 0
-  _useGravity: 0
-  _shareVertices: 0
-  _smoothVertices: 0
 --- !u!1 &1492975949
 GameObject:
   m_ObjectHideFlags: 0
@@ -2116,7 +2062,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-192230
+  m_Name: pb_Mesh57036
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
