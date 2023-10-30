@@ -6,24 +6,28 @@ namespace Paparazzi
     {
         public float speed = 3f;
         public float jumpVelocity = 20f;
+        public float turnSmoothTime = 0.1f;
         public float currentSpeed => new Vector2(characterController.velocity.x, characterController.velocity.z).magnitude;
 
         private Camera followCamera;
         private PlayerInput input;
+        private Animator animator;
         private CharacterController characterController;
 
+        private float turnSmoothVelocity;
         private float currnetVelocityY;
 
         void Start()
         {
             followCamera = Camera.main;
             input = GetComponent<PlayerInput>();
+            animator = GetComponent<Animator>();
             characterController = GetComponent<CharacterController>();
         }
 
         private void FixedUpdate()
         {
-            if (currentSpeed > 2.0f)
+            if (input.moveInput.magnitude > 0.1f)
             {
                 Rotate();
             }
@@ -33,6 +37,8 @@ namespace Paparazzi
 
         void Update()
         {
+            UpdateAnimation(input.moveInput);
+
             if (input.isJump)
             {
                 Jump();
@@ -59,6 +65,7 @@ namespace Paparazzi
         public void Rotate()
         {
             var targetRotation = followCamera.transform.eulerAngles.y;
+            targetRotation = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetRotation, ref turnSmoothVelocity, turnSmoothTime);
             transform.eulerAngles = Vector3.up * targetRotation;
         }
 
@@ -72,6 +79,12 @@ namespace Paparazzi
             {
                 return;
             }
+        }
+
+        private void UpdateAnimation(Vector2 moveInput)
+        {
+            animator.SetFloat("Vertical", moveInput.y, 0.05f, Time.deltaTime);
+            animator.SetFloat("Horizontal", moveInput.x, 0.05f, Time.deltaTime);
         }
     }
 
