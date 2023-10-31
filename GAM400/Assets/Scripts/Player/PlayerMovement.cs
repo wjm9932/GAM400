@@ -37,7 +37,7 @@ namespace Paparazzi
 
         void Update()
         {
-            UpdateAnimation(input.moveInput);
+            UpdateAnimation(input.moveInputForAnim);
 
             if (input.isJump)
             {
