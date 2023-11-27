@@ -49,7 +49,7 @@ namespace Paparazzi
                 animator.SetBool("IsMoving", false);
             }
             
-            if (currnetVelocityY < -0.5f && IsGrounded() == false)
+            if (currnetVelocityY < -1f && IsGrounded() == false)
             {
                 animator.SetBool("IsGrounded", false);
                 animator.SetBool("IsFalling", true);
@@ -59,7 +59,7 @@ namespace Paparazzi
                 animator.SetBool("IsFalling", false);
             }
 
-            if (Time.time - lastGroundedTime >= 0.2)
+            if (Time.time - lastGroundedTime >= 0.1)
             {
                 if (IsGrounded() == true)
                 {
@@ -87,8 +87,11 @@ namespace Paparazzi
             Vector3 moveDir = Vector3.Normalize(transform.forward * moveInput.y + transform.right * moveInput.x);
 
             currnetVelocityY += Time.deltaTime * Physics.gravity.y;
-
-            Vector3 velocity = moveDir * targetSpeed + Vector3.up * currnetVelocityY;
+             
+            Vector3 velocity = moveDir * targetSpeed;
+           
+            velocity = AdjustVelocityToSlope(velocity);
+            velocity.y += currnetVelocityY;
 
             characterController.Move(velocity * Time.deltaTime);
 
@@ -96,6 +99,24 @@ namespace Paparazzi
             {
                 currnetVelocityY = 0f;
             }
+        }
+
+        private Vector3 AdjustVelocityToSlope(Vector3 velocity)
+        {
+            var ray = new Ray(transform.position, Vector3.down);
+
+            if(Physics.Raycast(ray, out RaycastHit hitInfo, 0.2f))
+            {
+                var slopeRotation = Quaternion.FromToRotation(Vector3.up, hitInfo.normal);
+                var adjustedVelocity = slopeRotation * velocity;
+
+                if(adjustedVelocity.y < 0)
+                {
+                    return adjustedVelocity;
+                }
+            }
+
+            return velocity;
         }
 
         public void Rotate()
@@ -127,17 +148,16 @@ namespace Paparazzi
 
         private bool IsGrounded()
         {
-            if(characterController.isGrounded == true)
+            if (characterController.isGrounded == true)
             {
                 return true;
             }
-            else
-            {
-                var ray = new Ray(this.transform.position + Vector3.up * 0.1f, Vector3.down);
-                var maxDistance = 0.5f;
-                Debug.DrawRay(transform.position + Vector3.up * 0.1f, Vector3.down * maxDistance, Color.red);
-                return Physics.Raycast(ray, maxDistance);
-            }
+
+            var ray = new Ray(this.transform.position + Vector3.up * 0.1f, Vector3.down);
+            var maxDistance = 0.5f;
+            Debug.DrawRay(transform.position + Vector3.up * 0.1f, Vector3.down * maxDistance, Color.red);
+            return Physics.Raycast(ray, maxDistance);
+
         }
     }
 }
