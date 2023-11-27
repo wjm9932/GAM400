@@ -3,33 +3,40 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MainMenu : MonoBehaviour
+namespace Paparazzi
 {
-    // Start is called before the first frame update
-    void Start()
+    public class MainMenu : MonoBehaviour
     {
+        public AudioClip Button_Clip;
+        // Start is called before the first frame update
+        void Start()
+        {
 
-    }
+        }
 
-    // Update is called once per frame
-    void Update()
-    {
+        // Update is called once per frame
+        void Update()
+        {
 
-    }
-    public void OnClickStart()
-    {
-        SceneManager.LoadScene("Level1");
-    }
-    public void OnClickOption()
-    {
-        SceneManager.LoadScene("Test_PhotoFeature");
-    }
-    public void OnClickEnd()
-    {
+        }
+        public void OnClickStart()
+        {
+            SoundManager.instance.SFXPlay("Button", Button_Clip);
+            SceneManager.LoadScene("Level1");
+        }
+        public void OnClickOption()
+        {
+            SoundManager.instance.SFXPlay("Button", Button_Clip);
+            SceneManager.LoadScene("Test_PhotoFeature");
+        }
+        public void OnClickEnd()
+        {
+            SoundManager.instance.SFXPlay("Button", Button_Clip);
 #if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
+            UnityEditor.EditorApplication.isPlaying = false;
 #else
             Application.Quit();
 #endif
+        }
     }
 }

@@ -2624,7 +2624,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.30542648, y: 0.00000003276837, z: -0.000000010510568, w: 0.9522157}
+  m_LocalRotation: {x: 0.30542648, y: -0.00000003276837, z: 0.000000010510568, w: 0.9522157}
   m_LocalPosition: {x: -3.88, y: 3, z: -5.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3080,7 +3080,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1120818198}
-  m_LocalRotation: {x: 0.30542645, y: 0.000000016384185, z: -0.000000005255283, w: 0.9522157}
+  m_LocalRotation: {x: 0.30542645, y: -0.000000016384186, z: 0.0000000052552838, w: 0.9522157}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4590,7 +4590,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1750653430}
-  m_LocalRotation: {x: 0.27631804, y: -1.4997159e-15, z: 1.0751796e-15, w: 0.96106625}
+  m_LocalRotation: {x: 0.27631804, y: 0.000000028642008, z: -0.00000000823492, w: 0.96106625}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5169,6 +5169,9 @@ MonoBehaviour:
   ResumeButton: {fileID: 1268137416}
   GoToMenuButton: {fileID: 674414799}
   QuitButton: {fileID: 433592471}
+  Button_Clip: {fileID: 8300000, guid: b0a135c19dbc2cc49909a2a583d55719, type: 3}
+  Pause_Clip: {fileID: 8300000, guid: 1bcb2912fae89934ba43c9756aa7d255, type: 3}
+  Resume_Clip: {fileID: 8300000, guid: 625ad317b451ec147984e94636d712a6, type: 3}
 --- !u!114 &1975871491
 MonoBehaviour:
   m_ObjectHideFlags: 0

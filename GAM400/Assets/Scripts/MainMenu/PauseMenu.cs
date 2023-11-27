@@ -2,75 +2,85 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-
-public class PauseMenu : MonoBehaviour
+namespace Paparazzi
 {
-    public GameObject pauseMenu;
-    public static bool isPaused;
-    public Button ResumeButton;
-    public Button GoToMenuButton;
-    public Button QuitButton;
-
-    void Start()
+    public class PauseMenu : MonoBehaviour
     {
-        isPaused = false;
-        pauseMenu.SetActive(false);
+        public GameObject pauseMenu;
+        public static bool isPaused;
+        public Button ResumeButton;
+        public Button GoToMenuButton;
+        public Button QuitButton;
 
-        ResumeButton.onClick.AddListener(ResumeGame);
-        GoToMenuButton.onClick.AddListener(GoToMainMenu);
-        QuitButton.onClick.AddListener(Quit);
-    }
+        public AudioClip Button_Clip;
+        public AudioClip Pause_Clip;
+        public AudioClip Resume_Clip;
 
-
-    void Update()
-    {
-        
-        if (Input.GetKeyDown(KeyCode.Escape))
+        void Start()
         {
-            if (isPaused)
+            isPaused = false;
+            pauseMenu.SetActive(false);
+
+            ResumeButton.onClick.AddListener(ResumeGame);
+            GoToMenuButton.onClick.AddListener(GoToMainMenu);
+            QuitButton.onClick.AddListener(Quit);
+        }
+
+
+        void Update()
+        {
+
+            if (Input.GetKeyDown(KeyCode.Escape))
             {
-                ResumeGame();
-            }
-            else
-            {
-                PauseGame();
+                if (isPaused)
+                {
+                    ResumeGame();
+                }
+                else
+                {
+                    PauseGame();
+                }
             }
         }
-    }
 
-    public void PauseGame()
-    {
-        Cursor.lockState = CursorLockMode.Confined;
-        Cursor.visible = true;
+        public void PauseGame()
+        {
+            SoundManager.instance.SFXPlay("Pause", Pause_Clip);
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = true;
 
-        pauseMenu.SetActive(true);
-        Time.timeScale = 0f;
-        isPaused = true;
-    }
+            pauseMenu.SetActive(true);
+            Time.timeScale = 0f;
+            isPaused = true;
+        }
 
-    public void ResumeGame()
-    {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        public void ResumeGame()
+        {
+            SoundManager.instance.SFXPlay("Resume", Resume_Clip);
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
 
-        pauseMenu.SetActive(false);
-        Time.timeScale = 1f;
-        isPaused = false;
-    }
+            pauseMenu.SetActive(false);
+            Time.timeScale = 1f;
+            isPaused = false;
+        }
 
-    public void GoToMainMenu()
-    {
-        Time.timeScale = 1f;
-        SceneManager.LoadScene("MainMenu");
-    }
+        public void GoToMainMenu()
+        {
+            SoundManager.instance.SFXPlay("Button", Button_Clip);
+            Time.timeScale = 1f;
+            SceneManager.LoadScene("MainMenu");
+        }
 
-    public void Quit()
-    {
+        public void Quit()
+        {
+            SoundManager.instance.SFXPlay("Button", Button_Clip);
 #if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
+            UnityEditor.EditorApplication.isPlaying = false;
 #else
             Application.Quit();
 #endif
+        }
     }
 }
 

@@ -977,6 +977,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58f2fb3ba04d9e144a7b38bf3005da48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Button_Clip: {fileID: 8300000, guid: b0a135c19dbc2cc49909a2a583d55719, type: 3}
 --- !u!114 &1156398353
 MonoBehaviour:
   m_ObjectHideFlags: 0
