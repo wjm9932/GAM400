@@ -7,10 +7,11 @@ namespace Paparazzi
     public class Projectile : MonoBehaviour
     {
         public float life = 5f;
-
+        
+        
         private void Awake()
         {
-            Destroy(gameObject, life);
+            //Destroy(gameObject, life);
         }
     }
 }
