@@ -46,9 +46,9 @@ namespace Paparazzi
             {
                 var name = string.Format("Holder_{0}", (i + 1));
                 var newHolder = new GameObject(name);
-                newHolder.gameObject.transform.rotation = Quaternion.identity;
-                newHolder.gameObject.transform.localScale = Vector3.one;
                 newHolder.gameObject.transform.parent = holderRoot.transform;
+                newHolder.gameObject.transform.localEulerAngles = Vector3.zero;
+                newHolder.gameObject.transform.localScale = Vector3.one;
                 newHolder.gameObject.transform.localPosition = Vector3.zero;
 
                 var holderData = new HolderData();
@@ -89,16 +89,16 @@ namespace Paparazzi
         public void UseImage(PhotoData data)
         {
             var holder = data.Holder;
-            var viewingObjects = Utility.GetViewingObject(planes);
 
+            //var viewingObjects = Utility.GetViewingObject(planes);
             // delete and slice current viewing objects
-            foreach (var obj in viewingObjects)
-            {
-                if (obj == null) continue;
+            //foreach (var obj in viewingObjects)
+            //{
+            //    if (obj == null) continue;
 
-                var sliced = Slice(obj, false);
-                Destroy(obj);
-            }
+            //    var sliced = Slice(obj, false);
+            //    Destroy(obj);
+            //}
 
             if (holder.transform.childCount <= 0)
                 return;

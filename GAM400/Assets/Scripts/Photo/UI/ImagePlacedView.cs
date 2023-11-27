@@ -38,18 +38,20 @@ namespace Paparazzi
 
         void Update()
         {
-            if (!needToUpdate)
-                return;
-
-            var angle = albumPanel.gameObject.transform.rotation.eulerAngles.z;
-
             if (Input.GetKeyDown(KeyCode.Q))
+            {
+                var angle = albumPanel.gameObject.transform.rotation.eulerAngles.z;
                 angle += 15;
+                SelectedData.Holder.transform.localEulerAngles = new Vector3(0, 0, angle);
+                albumPanel.gameObject.transform.rotation = Quaternion.Euler(0, 0, angle);
+            }
             else if (Input.GetKeyDown(KeyCode.E))
+            {
+                var angle = albumPanel.gameObject.transform.rotation.eulerAngles.z;
                 angle -= 15;
-
-            SelectedData.Holder.transform.localEulerAngles = new Vector3(0, 0, angle);
-            albumPanel.gameObject.transform.rotation = Quaternion.Euler(0, 0, angle);
+                SelectedData.Holder.transform.localEulerAngles = new Vector3(0, 0, angle);
+                albumPanel.gameObject.transform.rotation = Quaternion.Euler(0, 0, angle);
+            }
         }
     }
 }
