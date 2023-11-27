@@ -108,14 +108,12 @@ namespace Paparazzi
                 var child = holder.transform.GetChild(i);
                 var newObject = Instantiate(child, child.transform.position, child.transform.rotation, enviromentHolder.transform);
                 newObject.gameObject.SetActive(true);
-                newObject.tag = "Sliceable";
+                newObject.tag = "Sliceable_M";
 
                 if (child.GetComponent<MeshCollider>() == null)
                     child.AddComponent<MeshCollider>();
                 if (child.GetComponent<MeshRenderer>() == null)
                     child.AddComponent<MeshRenderer>();
-                if (newObject.GetComponent<Projectile>() != null)
-                    newObject.GetComponent<Projectile>().enabled = false;
             }
 
             Utility.DestroyChildren(holder.transform);
