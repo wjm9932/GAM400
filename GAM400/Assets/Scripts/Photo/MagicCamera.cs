@@ -41,10 +41,10 @@ namespace Paparazzi
             {
                 var name = string.Format("Holder_{0}", (i + 1));
                 var newHolder = new GameObject(name);
-                newHolder.gameObject.transform.position = Vector3.zero;
                 newHolder.gameObject.transform.rotation = Quaternion.identity;
                 newHolder.gameObject.transform.localScale = Vector3.one;
                 newHolder.gameObject.transform.parent = holderRoot.transform;
+                newHolder.gameObject.transform.localPosition = new Vector3(0, 0, 2);
 
                 var holderData = new HolderData();
                 holderData.Holder = newHolder;

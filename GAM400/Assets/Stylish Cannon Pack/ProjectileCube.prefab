@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8482604342566354278}
   - component: {fileID: -2893111029434902077}
   - component: {fileID: 2645965304464865589}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ProjectileCube
   m_TagString: Sliceable
   m_Icon: {fileID: 0}
