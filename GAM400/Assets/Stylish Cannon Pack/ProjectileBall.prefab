@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7314560735091177480}
   - component: {fileID: 1020825854103674229}
   - component: {fileID: 5159835463957504902}
+  - component: {fileID: -5980209086414347451}
   m_Layer: 8
   m_Name: ProjectileBall
   m_TagString: Sliceable
@@ -133,3 +134,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-5980209086414347451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9042796592456578176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 435d8902b9c8be541bf750ddc995ced4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ActiveDelete: 1
+  life: 3

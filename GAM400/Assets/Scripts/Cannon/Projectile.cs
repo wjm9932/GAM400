@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Paparazzi
@@ -7,11 +5,19 @@ namespace Paparazzi
     public class Projectile : MonoBehaviour
     {
         public float life = 5f;
-        
-        
-        private void Awake()
+        private float timer = 0.0f;
+
+        private void Start()
         {
-            //Destroy(gameObject, life);
+            timer = 0.0f;
+        }
+
+        void Update()
+        {
+            timer += Time.deltaTime;
+
+            if (timer >= life)
+                Destroy(gameObject);
         }
     }
 }

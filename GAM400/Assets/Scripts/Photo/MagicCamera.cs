@@ -114,6 +114,8 @@ namespace Paparazzi
                     child.AddComponent<MeshCollider>();
                 if (child.GetComponent<MeshRenderer>() == null)
                     child.AddComponent<MeshRenderer>();
+                if (newObject.GetComponent<Projectile>() != null)
+                    newObject.GetComponent<Projectile>().enabled = false;
             }
 
             Utility.DestroyChildren(holder.transform);
