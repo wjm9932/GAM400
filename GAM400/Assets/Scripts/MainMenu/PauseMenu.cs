@@ -9,6 +9,7 @@ namespace Paparazzi
         public GameObject pauseMenu;
         public static bool isPaused;
         public Button ResumeButton;
+        public Button RestartButton;
         public Button GoToMenuButton;
         public Button QuitButton;
 
@@ -22,6 +23,7 @@ namespace Paparazzi
             pauseMenu.SetActive(false);
 
             ResumeButton.onClick.AddListener(ResumeGame);
+            RestartButton.onClick.AddListener(RestartGame);
             GoToMenuButton.onClick.AddListener(GoToMainMenu);
             QuitButton.onClick.AddListener(Quit);
         }
@@ -63,6 +65,14 @@ namespace Paparazzi
             pauseMenu.SetActive(false);
             Time.timeScale = 1f;
             isPaused = false;
+        }
+
+        public void RestartGame()
+        {
+            SoundManager.instance.SFXPlay("Button", Button_Clip);
+            Time.timeScale = 1f;
+
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
         public void GoToMainMenu()

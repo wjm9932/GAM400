@@ -27,7 +27,7 @@ namespace Paparazzi
         [SerializeField] private MagicCameraUIManager uiManager;
         [SerializeField] private GameObject[] models;
 
-        private bool canTakePicture => Battery > 12.5f;
+        private bool canTakePicture => Battery > 12.5f && PhotoAlbumData.Albumes.Count < 24;
         private bool needUpdateBattery;
         private int maxCount = 24;
         private PhotoMode mode;

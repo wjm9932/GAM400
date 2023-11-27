@@ -94,6 +94,7 @@ namespace Paparazzi
                 var newObject = Instantiate(child, child.transform.position, child.transform.rotation, enviromentHolder.transform);
                 newObject.gameObject.SetActive(true);
                 newObject.tag = "Sliceable_M";
+                newObject.gameObject.layer = LayerMask.NameToLayer("Environment");
 
                 if (child.GetComponent<MeshCollider>() == null)
                     child.AddComponent<MeshCollider>();
