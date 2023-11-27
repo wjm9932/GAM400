@@ -45,6 +45,9 @@ namespace Paparazzi
 
         void Update()
         {
+            if (PauseMenu.isPaused)
+                return;
+
             switch (mode)
             {
                 case PhotoMode.None:

@@ -30,7 +30,7 @@ public class PauseMenu : MonoBehaviour
 
     public void PauseGame()
     {
-        Cursor.lockState = CursorLockMode.None;
+        Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = true;
 
         pauseMenu.SetActive(true);
