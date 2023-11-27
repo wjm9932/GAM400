@@ -5,9 +5,20 @@ namespace Paparazzi
 {
     public class MagicCameraUIManager : MonoBehaviour
     {
+        [SerializeField] private NoneView noneView;
         [SerializeField] private CaptureView captureViewPanel;
         [SerializeField] private ImagePlacedView imagePlacedPanel;
         [SerializeField] private PhotoAlbumView photoAlbumPanel;
+
+        public void OpenNoneView()
+        {
+            noneView.Open();
+        }
+
+        public void CloseNoneView()
+        {
+            noneView.Close();
+        }
 
         public void OpenCaptureView()
         {

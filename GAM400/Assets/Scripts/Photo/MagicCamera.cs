@@ -10,13 +10,6 @@ namespace Paparazzi
 
     public class MagicCamera : MonoBehaviour
     {
-        #region Holder Data Set
-        class HolderData
-        {
-            public GameObject Holder = null;
-            public bool IsActive = false;
-        }
-        #endregion
 
         [SerializeField] private RenderTexture polaroidTexture;
         [SerializeField] private Camera mainCam;
@@ -25,7 +18,7 @@ namespace Paparazzi
         [SerializeField] private GameObject enviromentHolder;
         [SerializeField] float fovOffset = 5;
 
-        private List<HolderData> holderList;
+        private List<GameObject> holderList;
         private Vector3[] currentNearCorners;
         private Vector3[] currentFarCorners;
         private Plane[] planes;
@@ -51,10 +44,7 @@ namespace Paparazzi
                 newHolder.gameObject.transform.localScale = Vector3.one;
                 newHolder.gameObject.transform.localPosition = Vector3.zero;
 
-                var holderData = new HolderData();
-                holderData.Holder = newHolder;
-                holderData.IsActive = false;
-                holderList.Add(holderData);
+                holderList.Add(newHolder);
             }
         }
 
@@ -121,7 +111,7 @@ namespace Paparazzi
 
         void Awake()
         {
-            holderList = new List<HolderData>();
+            holderList = new List<GameObject>();
         }
 
         void Start()
@@ -175,16 +165,14 @@ namespace Paparazzi
             var count = holderList.Count;
             for (int i = 0; i < count; ++i)
             {
-                if (!holderList[i].IsActive)
+                if (holderList[i].transform.childCount < 1)
                 {
-                    holderList[i].IsActive = true;
-                    return holderList[i].Holder;
+                    return holderList[i];
                 }
             }
 
             var lastData = holderList.Last();
-            lastData.IsActive = true;
-            return lastData.Holder;
+            return lastData;
         }
 
         private GameObject Slice(GameObject target, bool getUpper)

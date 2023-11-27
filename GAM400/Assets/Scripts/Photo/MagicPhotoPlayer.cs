@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using UnityEngine;
 
 namespace Paparazzi
@@ -12,23 +14,18 @@ namespace Paparazzi
         public AudioClip Open_Clip;
         public AudioClip Close_Clip;
         public AudioClip Capture_Clip;
-        public int MaxCaptureCount { get; private set; }
-        public int RemainCaptureCount => MaxCaptureCount - currentCapturedCount;
+
+        public float Battery { get; private set; }
         public PhotoAlbumData PhotoAlbumData { get; private set; }
 
         [SerializeField] private MagicCamera magicCamera;
         [SerializeField] private MagicCameraUIManager uiManager;
         [SerializeField] private GameObject[] models;
 
-        private int currentCapturedCount;
+        private bool canTakePicture => Battery > 12.5f;
+        private bool needUpdateBattery;
+        private int maxCount = 24;
         private PhotoMode mode;
-
-        public void SetCaptureMaxCount(int maxCount)
-        {
-            MaxCaptureCount = maxCount;
-            currentCapturedCount = 0;
-            magicCamera.ResetHolders(maxCount);
-        }
 
         public void SelectedImage(PhotoData data)
         {
@@ -41,14 +38,20 @@ namespace Paparazzi
         void Start()
         {
             mode = PhotoMode.None;
+            uiManager.OpenNoneView();
+            Battery = 100.0f;
+            needUpdateBattery = false;
 
             PhotoAlbumData = new PhotoAlbumData();
+            magicCamera.ResetHolders(maxCount);
         }
 
         void Update()
         {
             if (PauseMenu.isPaused)
                 return;
+
+            UpdateBattery();
 
             switch (mode)
             {
@@ -84,22 +87,16 @@ namespace Paparazzi
 
             if (Input.GetKeyDown(KeyCode.F))
             {
-                if (RemainCaptureCount > 0)
-                {
-                    SoundManager.instance.SFXPlay("Open", Open_Clip);
-                    uiManager.OpenCaptureView();
-                    mode = PhotoMode.Capture;
-                }
-                else
-                {
-                    //TODO: Active Warning Panel;
-                    return;
-                }
+                SoundManager.instance.SFXPlay("Open", Open_Clip);
+                uiManager.OpenCaptureView();
+                uiManager.CloseNoneView();
+                mode = PhotoMode.Capture;
             }
 
             if (Input.GetKeyDown(KeyCode.Tab))
             {
                 uiManager.OpenPhotoAlbumView(PhotoAlbumData.Albumes);
+                uiManager.CloseNoneView();
                 mode = PhotoMode.Album;
             }
         }
@@ -115,19 +112,24 @@ namespace Paparazzi
                 Cursor.visible = false;
             }
 
-            if (Input.GetMouseButtonDown(1))
+            if (Input.GetMouseButtonDown(1) && canTakePicture)
             {
                 SoundManager.instance.SFXPlay("Capture", Capture_Clip);
                 uiManager.Capture();
                 var result = magicCamera.GetCaptureResult();
                 PhotoAlbumData.Add(result);
+
+                StopAllCoroutines();
+                StartCoroutine(UpdateBatteryFlag());
+                Battery -= 20.0f;
             }
 
-            if (Input.GetKeyDown(KeyCode.F) || Input.GetKeyDown(KeyCode.Escape))
+            if (Input.GetKeyDown(KeyCode.F))
             {
                 SoundManager.instance.SFXPlay("Close", Close_Clip);
                 uiManager.CloseCaptureView();
                 mode = PhotoMode.None;
+                uiManager.OpenNoneView();
             }
         }
 
@@ -146,13 +148,15 @@ namespace Paparazzi
                 PhotoAlbumData.Remove(photoData.Holder);
                 uiManager.CloseImagePlacedView();
                 mode = PhotoMode.None;
+                uiManager.OpenNoneView();
                 UpdateCharacterModel(true);
             }
 
-            if (Input.GetKeyDown(KeyCode.Escape))
+            if (Input.GetMouseButtonDown(0))
             {
                 uiManager.CloseImagePlacedView();
                 mode = PhotoMode.None;
+                uiManager.OpenNoneView();
                 UpdateCharacterModel(true);
             }
         }
@@ -165,10 +169,11 @@ namespace Paparazzi
                 Cursor.visible = true;
             }
 
-            if (Input.GetKeyDown(KeyCode.Tab) || Input.GetKeyDown(KeyCode.Escape))
+            if (Input.GetKeyDown(KeyCode.Tab))
             {
                 mode = PhotoMode.None;
                 uiManager.ClosePhotoAlbumView();
+                uiManager.OpenNoneView();
             }
         }
 
@@ -176,6 +181,24 @@ namespace Paparazzi
         {
             foreach (var model in models)
                 model.gameObject.SetActive(isActive);
+        }
+
+        private void UpdateBattery()
+        {
+            if (Battery >= 100.0f)
+                return;
+
+            if (!needUpdateBattery)
+                return;
+
+            Battery += 2.5f * Time.deltaTime;
+        }
+
+        private IEnumerator UpdateBatteryFlag()
+        {
+            needUpdateBattery = false;
+            yield return new WaitForSeconds(5.0f);
+            needUpdateBattery = true;
         }
     }
 }
