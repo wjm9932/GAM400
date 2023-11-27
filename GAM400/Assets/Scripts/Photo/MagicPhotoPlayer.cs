@@ -71,6 +71,12 @@ namespace Paparazzi
 
         private void UpdateNoneMode()
         {
+            if (Cursor.lockState != CursorLockMode.Locked || Cursor.visible != false)
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+            }
+
             if (Input.GetKeyDown(KeyCode.F))
             {
                 if (RemainCaptureCount > 0)
@@ -98,6 +104,12 @@ namespace Paparazzi
             if (!uiManager.CanCapture())
                 return;
 
+            if (Cursor.lockState != CursorLockMode.Locked || Cursor.visible != false)
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+            }
+
             if (Input.GetMouseButtonDown(1))
             {
                 SoundManager.instance.SFXPlay("Capture", Capture_Clip);
@@ -116,6 +128,12 @@ namespace Paparazzi
 
         private void UpdateImagePlacedMode()
         {
+            if (Cursor.lockState != CursorLockMode.Locked || Cursor.visible != false)
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+            }
+
             if (Input.GetMouseButtonDown(1))
             {
                 var photoData = uiManager.GetCurrentPlacedData();
@@ -134,6 +152,12 @@ namespace Paparazzi
 
         private void UpdateAlbumMode()
         {
+            if (Cursor.lockState != CursorLockMode.None || Cursor.visible != true)
+            {
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+            }
+
             if (Input.GetKeyDown(KeyCode.Tab) || Input.GetKeyDown(KeyCode.Escape))
             {
                 mode = PhotoMode.None;
