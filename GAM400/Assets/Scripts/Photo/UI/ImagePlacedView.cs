@@ -8,6 +8,7 @@ namespace Paparazzi
         [SerializeField] private GameObject panel;
         [SerializeField] private GameObject albumPanel;
         [SerializeField] private RawImage image;
+        [SerializeField] private MagicCamera magicCam;
 
         private bool needToUpdate = false;
         public PhotoData SelectedData { get; private set; }
@@ -20,7 +21,6 @@ namespace Paparazzi
             image.texture = data.Image;
 
             albumPanel.gameObject.transform.rotation = Quaternion.identity;
-            //SelectedData.Holder.transform.rotation = Quaternion.identity;
         }
 
         public void Close()
@@ -38,20 +38,18 @@ namespace Paparazzi
 
         void Update()
         {
-            //if (!needToUpdate)
-            //    return;
+            if (!needToUpdate)
+                return;
 
-            //var currentRotation = albumPanel.gameObject.transform.rotation.eulerAngles.z;
-            //Quaternion newRotation = Quaternion.Euler(0, 0, currentRotation);
+            var angle = albumPanel.gameObject.transform.rotation.eulerAngles.z;
 
-            //if (Input.GetKeyDown(KeyCode.Q))
-            //    newRotation = Quaternion.Euler(0, 0, currentRotation + 15);
-            //else if (Input.GetKeyDown(KeyCode.E))
-            //    newRotation = Quaternion.Euler(0, 0, currentRotation - 15);
+            if (Input.GetKeyDown(KeyCode.Q))
+                angle += 15;
+            else if (Input.GetKeyDown(KeyCode.E))
+                angle -= 15;
 
-            //albumPanel.gameObject.transform.rotation = newRotation;
-            //SelectedData.Holder.transform.RotateAround(SelectedData.Holder.transform.position, Vector3.up, 20 * Time.deltaTime);
-            //SelectedData.Holder.gameObject.transform.localEulerAngles = newRotation.eulerAngles;
+            SelectedData.Holder.transform.localEulerAngles = new Vector3(0, 0, angle);
+            albumPanel.gameObject.transform.rotation = Quaternion.Euler(0, 0, angle);
         }
     }
 }

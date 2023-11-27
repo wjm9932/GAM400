@@ -30,6 +30,11 @@ namespace Paparazzi
         private Vector3[] currentFarCorners;
         private Plane[] planes;
 
+        public Vector3 LookAt()
+        {
+            return magicCam.transform.forward;
+        }
+
         public void ResetHolders(int maxCount)
         {
             if (holderRoot.transform.childCount > 0)
@@ -44,7 +49,7 @@ namespace Paparazzi
                 newHolder.gameObject.transform.rotation = Quaternion.identity;
                 newHolder.gameObject.transform.localScale = Vector3.one;
                 newHolder.gameObject.transform.parent = holderRoot.transform;
-                newHolder.gameObject.transform.localPosition = new Vector3(0, 0, 2);
+                newHolder.gameObject.transform.localPosition = Vector3.zero;
 
                 var holderData = new HolderData();
                 holderData.Holder = newHolder;
@@ -103,7 +108,8 @@ namespace Paparazzi
                 var child = holder.transform.GetChild(i);
                 var newObject = Instantiate(child, child.transform.position, child.transform.rotation, enviromentHolder.transform);
                 newObject.gameObject.SetActive(true);
-                newObject.tag = "Sliceable";
+                newObject.tag = "Sliceable_M";
+
                 if (child.GetComponent<MeshCollider>() == null)
                     child.AddComponent<MeshCollider>();
                 if (child.GetComponent<MeshRenderer>() == null)

@@ -48,27 +48,10 @@ namespace Paparazzi
             {
                 animator.SetBool("IsMoving", false);
             }
-
-            if (Time.time - lastGroundedTime >= 0.2)
-            {
-                if (characterController.isGrounded == true)
-                {
-                    animator.SetBool("IsGrounded", true);
-                    animator.SetBool("IsJumping", false);
-                }
-            }
-            else
+            
+            if (currnetVelocityY < -0.5f && IsGrounded() == false)
             {
                 animator.SetBool("IsGrounded", false);
-            }
-
-            if (input.isJump)
-            {
-                Jump();
-            }
-
-            if (currnetVelocityY < -0.5f)
-            {
                 animator.SetBool("IsFalling", true);
             }
             else
@@ -76,7 +59,23 @@ namespace Paparazzi
                 animator.SetBool("IsFalling", false);
             }
 
-            if (characterController.isGrounded == true)
+            if (Time.time - lastGroundedTime >= 0.2)
+            {
+                if (IsGrounded() == true)
+                {
+                    animator.SetBool("IsGrounded", true);
+                    animator.SetBool("IsJumping", false);
+                }
+            }
+
+            if (input.isJump)
+            {
+                Jump();
+            }
+
+           
+
+            if (IsGrounded() == true)
             {
                 lastGroundedTime = Time.time;
             }
@@ -108,8 +107,9 @@ namespace Paparazzi
 
         public void Jump()
         {
-            if (characterController.isGrounded == true)
+            if (IsGrounded() == true)
             {
+                animator.SetBool("IsGrounded", false);
                 animator.SetBool("IsJumping", true);
                 currnetVelocityY = jumpVelocity;
             }
@@ -123,6 +123,21 @@ namespace Paparazzi
         {
             animator.SetFloat("Vertical", moveInput.y, 0.05f, Time.deltaTime);
             animator.SetFloat("Horizontal", moveInput.x, 0.05f, Time.deltaTime);
+        }
+
+        private bool IsGrounded()
+        {
+            if(characterController.isGrounded == true)
+            {
+                return true;
+            }
+            else
+            {
+                var ray = new Ray(this.transform.position + Vector3.up * 0.1f, Vector3.down);
+                var maxDistance = 0.5f;
+                Debug.DrawRay(transform.position + Vector3.up * 0.1f, Vector3.down * maxDistance, Color.red);
+                return Physics.Raycast(ray, maxDistance);
+            }
         }
     }
 }
