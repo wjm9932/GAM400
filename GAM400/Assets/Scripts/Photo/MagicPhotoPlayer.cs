@@ -9,6 +9,9 @@ namespace Paparazzi
 
     public class MagicPhotoPlayer : MonoBehaviour
     {
+        public AudioClip Open_Clip;
+        public AudioClip Close_Clip;
+        public AudioClip Capture_Clip;
         public int MaxCaptureCount { get; private set; }
         public int RemainCaptureCount => MaxCaptureCount - currentCapturedCount;
         public PhotoAlbumData PhotoAlbumData { get; private set; }
@@ -72,6 +75,7 @@ namespace Paparazzi
             {
                 if (RemainCaptureCount > 0)
                 {
+                    SoundManager.instance.SFXPlay("Open", Open_Clip);
                     uiManager.OpenCaptureView();
                     mode = PhotoMode.Capture;
                 }
@@ -96,6 +100,7 @@ namespace Paparazzi
 
             if (Input.GetMouseButtonDown(1))
             {
+                SoundManager.instance.SFXPlay("Capture", Capture_Clip);
                 uiManager.Capture();
                 var result = magicCamera.GetCaptureResult();
                 PhotoAlbumData.Add(result);
@@ -103,6 +108,7 @@ namespace Paparazzi
 
             if (Input.GetKeyDown(KeyCode.F) || Input.GetKeyDown(KeyCode.Escape))
             {
+                SoundManager.instance.SFXPlay("Close", Close_Clip);
                 uiManager.CloseCaptureView();
                 mode = PhotoMode.None;
             }
