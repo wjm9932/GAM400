@@ -19,10 +19,9 @@ namespace Paparazzi
         private float currnetVelocityY = 0;
         private float lastGroundedTime;
 
-        public List<AudioClip> MoveList_Clip;
+        //public AudioClip Move_Clip;
         public AudioClip Jump_Clip;
         public AudioClip Land_Clip;
-        private int clip_index;
 
         void Start()
         {
@@ -30,7 +29,6 @@ namespace Paparazzi
             input = GetComponent<PlayerInput>();
             animator = GetComponent<Animator>();
             characterController = GetComponent<CharacterController>();
-            clip_index = 0;
         }
 
         private void FixedUpdate()
@@ -50,16 +48,6 @@ namespace Paparazzi
             if (input.moveInput.magnitude > 0)
             {
                 animator.SetBool("IsMoving", true);
-
-                //SoundManager.instance.SFXPlay("Move", MoveList_Clip[clip_index]);
-                //if (clip_index < MoveList_Clip.Count)
-                //{
-                //    clip_index++;
-                //}
-                //else
-                //{
-                //    clip_index = 0;
-                //}
             }
             else
             {
@@ -88,7 +76,6 @@ namespace Paparazzi
 
             if (input.isJump)
             {
-                SoundManager.instance.SFXPlay("Jump", Jump_Clip);
                 Jump();
             }
 
@@ -149,6 +136,7 @@ namespace Paparazzi
         {
             if (IsGrounded() == true)
             {
+                SoundManager.instance.SFXPlay("Jump", Jump_Clip);
                 animator.SetBool("IsGrounded", false);
                 animator.SetBool("IsJumping", true);
                 currnetVelocityY = jumpVelocity;
@@ -178,5 +166,10 @@ namespace Paparazzi
             return Physics.Raycast(ray, maxDistance);
 
         }
+
+        //void Footstep()
+        //{
+        //    AudioSource.PlayClipAtPoint(Move_Clip, Camera.main.transform.position);
+        //}
     }
 }

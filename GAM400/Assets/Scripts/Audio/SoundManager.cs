@@ -28,12 +28,20 @@ namespace Paparazzi
 
         private void OnSceneLoaded(Scene arg0,LoadSceneMode arg1)
         {
-            //for (int i = 0; i < BgList.Count; i++)
-            //{
-            //    if(arg0.name == BgList[i].name)
-            //        BgSoundPlay(BgList[i]);
-            //}
-            BgSoundPlay(BgList[0]);
+            if (arg0.name == "MainMenu")
+            {
+                BgSoundPlay(BgList[0]);
+            }
+            else
+            {
+                int cur_level = (int)System.Char.GetNumericValue(arg0.name[arg0.name.Length - 1]);
+                for (int i = 1; i <= BgList.Count; i++)
+                {
+                    if (i == cur_level)
+                        BgSoundPlay(BgList[cur_level]);
+                }
+            }
+            
         }
         public void SFXPlay(string sfxName, AudioClip clip)
         {

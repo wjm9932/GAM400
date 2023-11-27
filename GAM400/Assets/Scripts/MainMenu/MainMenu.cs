@@ -18,7 +18,7 @@ public class MainMenu : MonoBehaviour
     }
     public void OnClickStart()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("Level1");
     }
     public void OnClickOption()
     {
