@@ -18,6 +18,7 @@ namespace Paparazzi
 
         [SerializeField] private MagicCamera magicCamera;
         [SerializeField] private MagicCameraUIManager uiManager;
+        [SerializeField] private GameObject[] models;
 
         private int currentCapturedCount;
         private PhotoMode mode;
@@ -31,6 +32,7 @@ namespace Paparazzi
 
         public void SelectedImage(PhotoData data)
         {
+            UpdateCharacterModel(false);
             mode = PhotoMode.ImagePlace;
             uiManager.ClosePhotoAlbumView();
             uiManager.OpenImagePlacedView(data);
@@ -144,12 +146,14 @@ namespace Paparazzi
                 PhotoAlbumData.Remove(photoData.Holder);
                 uiManager.CloseImagePlacedView();
                 mode = PhotoMode.None;
+                UpdateCharacterModel(true);
             }
 
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 uiManager.CloseImagePlacedView();
                 mode = PhotoMode.None;
+                UpdateCharacterModel(true);
             }
         }
 
@@ -166,6 +170,12 @@ namespace Paparazzi
                 mode = PhotoMode.None;
                 uiManager.ClosePhotoAlbumView();
             }
+        }
+
+        private void UpdateCharacterModel(bool isActive)
+        {
+            foreach (var model in models)
+                model.gameObject.SetActive(isActive);
         }
     }
 }
