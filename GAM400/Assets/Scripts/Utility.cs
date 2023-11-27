@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Paparazzi
@@ -27,9 +26,14 @@ namespace Paparazzi
             List<GameObject> lists = new List<GameObject>();
             var slicables = GameObject.FindGameObjectsWithTag("Sliceable");
             var moreObjects = GameObject.FindGameObjectsWithTag("Sliceable_M");
-            slicables.AddRange(moreObjects);
 
-            foreach (var obj in slicables)
+            List<GameObject> allObject = new List<GameObject>();
+            if (slicables != null)
+                allObject.AddRange(slicables);
+            if (moreObjects != null)
+                allObject.AddRange(moreObjects);
+
+            foreach (var obj in allObject)
             {
                 var renderer = obj.GetComponent<Renderer>();
 
