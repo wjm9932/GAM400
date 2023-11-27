@@ -2182,6 +2182,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc3bdc99f45ed8946ba240162ac716c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Open_Clip: {fileID: 8300000, guid: 632b1c41f6a368540970d173af4f782f, type: 3}
+  Close_Clip: {fileID: 8300000, guid: e759c65f76c80834abc572593f946008, type: 3}
+  Capture_Clip: {fileID: 8300000, guid: 245965889d0a183438ef3478b27122c0, type: 3}
   magicCamera: {fileID: 788772904071927124}
   uiManager: {fileID: 641355301477058749}
 --- !u!4 &7784021149822552518 stripped

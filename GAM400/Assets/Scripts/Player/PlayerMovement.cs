@@ -15,7 +15,8 @@ namespace Paparazzi
         private CharacterController characterController;
 
         private float turnSmoothVelocity;
-        private float currnetVelocityY;
+        private float currnetVelocityY = 0;
+        private float lastGroundedTime;
 
         void Start()
         {
@@ -39,9 +40,45 @@ namespace Paparazzi
         {
             UpdateAnimation(input.moveInputForAnim);
 
+            if (input.moveInput.magnitude > 0)
+            {
+                animator.SetBool("IsMoving", true);
+            }
+            else
+            {
+                animator.SetBool("IsMoving", false);
+            }
+
+            if (Time.time - lastGroundedTime >= 0.2)
+            {
+                if (characterController.isGrounded == true)
+                {
+                    animator.SetBool("IsGrounded", true);
+                    animator.SetBool("IsJumping", false);
+                }
+            }
+            else
+            {
+                animator.SetBool("IsGrounded", false);
+            }
+
             if (input.isJump)
             {
                 Jump();
+            }
+
+            if (currnetVelocityY < -0.5f)
+            {
+                animator.SetBool("IsFalling", true);
+            }
+            else
+            {
+                animator.SetBool("IsFalling", false);
+            }
+
+            if (characterController.isGrounded == true)
+            {
+                lastGroundedTime = Time.time;
             }
         }
 
@@ -73,6 +110,7 @@ namespace Paparazzi
         {
             if (characterController.isGrounded == true)
             {
+                animator.SetBool("IsJumping", true);
                 currnetVelocityY = jumpVelocity;
             }
             else
@@ -87,5 +125,4 @@ namespace Paparazzi
             animator.SetFloat("Horizontal", moveInput.x, 0.05f, Time.deltaTime);
         }
     }
-
 }
