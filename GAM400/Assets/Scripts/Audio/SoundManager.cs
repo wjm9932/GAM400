@@ -11,6 +11,7 @@ namespace Paparazzi
         public AudioSource BgSound;
         public List<AudioClip> BgList;
 
+
         private void Awake()
         {
             if(instance == null)

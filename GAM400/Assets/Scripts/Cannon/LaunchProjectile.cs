@@ -11,7 +11,9 @@ namespace Paparazzi
         public float launchVelocity = 15f;
         private int RandNum = 0;
         private float Sec = 0;
-        
+
+        public AudioSource Fire_Sound;
+
         private void Update()
         {
             Sec += Time.deltaTime;
@@ -19,6 +21,9 @@ namespace Paparazzi
             {
                 RandNum = Random.Range(0, 2);
                 var _projectile = Instantiate(projectile[RandNum], launchPoint.position, launchPoint.rotation);
+
+                Fire_Sound.Play();
+
                 _projectile.GetComponent<Rigidbody>().velocity = -launchPoint.right * launchVelocity;
                 Sec = 0;
             }
