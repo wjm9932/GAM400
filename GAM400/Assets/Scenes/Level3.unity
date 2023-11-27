@@ -3073,6 +3073,26 @@ PrefabInstance:
       propertyPath: Land_Clip
       value: 
       objectReference: {fileID: 8300000, guid: cfb4fe2db8114a541b25bc793b3f35b8, type: 3}
+    - target: {fileID: 4152632284739942047, guid: a0a8acca2ede50d48b18ba6a2872be13, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4152632284739942047, guid: a0a8acca2ede50d48b18ba6a2872be13, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5928188059427620563, guid: a0a8acca2ede50d48b18ba6a2872be13, type: 3}
+      propertyPath: Hold_Clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 4c603ded87f71f8458c64fdc9943c86a, type: 3}
+    - target: {fileID: 5928188059427620563, guid: a0a8acca2ede50d48b18ba6a2872be13, type: 3}
+      propertyPath: UnHold_Clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 4c603ded87f71f8458c64fdc9943c86a, type: 3}
+    - target: {fileID: 5928188059427620563, guid: a0a8acca2ede50d48b18ba6a2872be13, type: 3}
+      propertyPath: Capture_Clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 7f284a9543ef80141a55ca2dc2800e6a, type: 3}
     - target: {fileID: 7443805123408384892, guid: a0a8acca2ede50d48b18ba6a2872be13, type: 3}
       propertyPath: m_Name
       value: Main Player
@@ -4356,17 +4376,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1849628874}
   m_CullTransparentMesh: 1
---- !u!114 &1860546339 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5928188059427620563, guid: a0a8acca2ede50d48b18ba6a2872be13, type: 3}
-  m_PrefabInstance: {fileID: 1500681397}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 110539134}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc3bdc99f45ed8946ba240162ac716c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1909477507
 GameObject:
   m_ObjectHideFlags: 3
@@ -4910,11 +4919,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 2051712149}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65618fa2a8446b24dad34352dd0d9d3a, type: 3}
+  m_Script: {fileID: 11500000, guid: b975a5c6773c1be419a301b6cb5a80f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentLevelMaxCount: 5
-  player: {fileID: 1860546339}
 --- !u!4 &2051712151
 Transform:
   m_ObjectHideFlags: 0

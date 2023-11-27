@@ -8,6 +8,8 @@ namespace Paparazzi
     public class KillboxReset : MonoBehaviour
     {
         public GameObject Player;
+        public GameObject temp;
+        public AudioClip Revive_Clip;
         // Start is called before the first frame update
         void Start()
         {
@@ -16,7 +18,7 @@ namespace Paparazzi
                 Player = GameObject.Find("Main Player");
             }
         }
-
+        
         // Update is called once per frame
         void Update()
         {
@@ -28,7 +30,9 @@ namespace Paparazzi
         {
             if (other.gameObject == Player)
             {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                SoundManager.instance.SFXPlay("Revive", Revive_Clip);
+                Player.transform.position = temp.transform.position;
+                //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             }
         }
 
@@ -36,7 +40,9 @@ namespace Paparazzi
         {
             if (collision.gameObject == Player)
             {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                SoundManager.instance.SFXPlay("Revive", Revive_Clip);
+                Player.transform.position = temp.transform.position;
+                //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             }
         }
     }

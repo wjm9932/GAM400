@@ -148,6 +148,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 0}
+  temp: {fileID: 6653449242355288545, guid: d1b907b00ca38ce46a4506725afad50a, type: 3}
+  Revive_Clip: {fileID: 8300000, guid: 50661be604165f345a4c7e6b748f0eb7, type: 3}
 --- !u!114 &7317583243368760846
 MonoBehaviour:
   m_ObjectHideFlags: 0

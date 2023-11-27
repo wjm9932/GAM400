@@ -2570,6 +2570,14 @@ PrefabInstance:
       propertyPath: Land_Clip
       value: 
       objectReference: {fileID: 8300000, guid: cfb4fe2db8114a541b25bc793b3f35b8, type: 3}
+    - target: {fileID: 4152632284739942047, guid: a0a8acca2ede50d48b18ba6a2872be13, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4152632284739942047, guid: a0a8acca2ede50d48b18ba6a2872be13, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5920778036492381060, guid: a0a8acca2ede50d48b18ba6a2872be13, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -2578,6 +2586,14 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5928188059427620563, guid: a0a8acca2ede50d48b18ba6a2872be13, type: 3}
+      propertyPath: Hold_Clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 4c603ded87f71f8458c64fdc9943c86a, type: 3}
+    - target: {fileID: 5928188059427620563, guid: a0a8acca2ede50d48b18ba6a2872be13, type: 3}
+      propertyPath: Capture_Clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 7f284a9543ef80141a55ca2dc2800e6a, type: 3}
     - target: {fileID: 6263243792102838972, guid: a0a8acca2ede50d48b18ba6a2872be13, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
@@ -3689,7 +3705,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1909477507}
-  m_LocalRotation: {x: 0.39526543, y: -0.000000022351948, z: 0.000000009618191, w: 0.918567}
+  m_LocalRotation: {x: 0.39526543, y: 0.000000022351951, z: -0.000000009618192, w: 0.918567}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

@@ -13,7 +13,12 @@ namespace Paparazzi
     {
         public AudioClip Open_Clip;
         public AudioClip Close_Clip;
+        public AudioClip Hold_Clip;
         public AudioClip Capture_Clip;
+
+        public AudioClip Paste_Clip;
+        public AudioClip SelectPic_Clip;
+        public AudioClip Fail_Clip;
 
         public float Battery { get; private set; }
         public PhotoAlbumData PhotoAlbumData { get; private set; }
@@ -29,6 +34,7 @@ namespace Paparazzi
 
         public void SelectedImage(PhotoData data)
         {
+            //SoundManager.instance.SFXPlay("SelectPic", SelectPic_Clip);
             UpdateCharacterModel(false);
             mode = PhotoMode.ImagePlace;
             uiManager.ClosePhotoAlbumView();
@@ -87,7 +93,7 @@ namespace Paparazzi
 
             if (Input.GetKeyDown(KeyCode.F))
             {
-                SoundManager.instance.SFXPlay("Open", Open_Clip);
+                SoundManager.instance.SFXPlay("Hold", Hold_Clip);
                 uiManager.OpenCaptureView();
                 uiManager.CloseNoneView();
                 mode = PhotoMode.Capture;
@@ -95,6 +101,7 @@ namespace Paparazzi
 
             if (Input.GetKeyDown(KeyCode.Tab))
             {
+                SoundManager.instance.SFXPlay("Open", Open_Clip);
                 uiManager.OpenPhotoAlbumView(PhotoAlbumData.Albumes);
                 uiManager.CloseNoneView();
                 mode = PhotoMode.Album;
@@ -126,7 +133,7 @@ namespace Paparazzi
 
             if (Input.GetKeyDown(KeyCode.F))
             {
-                SoundManager.instance.SFXPlay("Close", Close_Clip);
+                SoundManager.instance.SFXPlay("UnHold", Hold_Clip);
                 uiManager.CloseCaptureView();
                 mode = PhotoMode.None;
                 uiManager.OpenNoneView();
@@ -143,6 +150,7 @@ namespace Paparazzi
 
             if (Input.GetMouseButtonDown(1))
             {
+                //SoundManager.instance.SFXPlay("Paste", Paste_Clip);
                 var photoData = uiManager.GetCurrentPlacedData();
                 magicCamera.UseImage(photoData);
                 PhotoAlbumData.Remove(photoData.Holder);
@@ -154,6 +162,7 @@ namespace Paparazzi
 
             if (Input.GetMouseButtonDown(0))
             {
+                SoundManager.instance.SFXPlay("UnHold", Hold_Clip);
                 uiManager.CloseImagePlacedView();
                 mode = PhotoMode.None;
                 uiManager.OpenNoneView();
@@ -171,6 +180,7 @@ namespace Paparazzi
 
             if (Input.GetKeyDown(KeyCode.Tab))
             {
+                SoundManager.instance.SFXPlay("Close", Close_Clip);
                 mode = PhotoMode.None;
                 uiManager.ClosePhotoAlbumView();
                 uiManager.OpenNoneView();
@@ -189,7 +199,10 @@ namespace Paparazzi
                 return;
 
             if (!needUpdateBattery)
+            {
+                //SoundManager.instance.SFXPlay("Fail", Fail_Clip);
                 return;
+            }
 
             Battery += 2.5f * Time.deltaTime;
         }
