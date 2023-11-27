@@ -1,15 +1,24 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 
 public class PauseMenu : MonoBehaviour
 {
     public GameObject pauseMenu;
     public static bool isPaused;
+    public Button ResumeButton;
+    public Button GoToMenuButton;
+    public Button QuitButton;
 
     void Start()
     {
+        isPaused = false;
         pauseMenu.SetActive(false);
+
+        ResumeButton.onClick.AddListener(ResumeGame);
+        GoToMenuButton.onClick.AddListener(GoToMainMenu);
+        QuitButton.onClick.AddListener(Quit);
     }
 
 

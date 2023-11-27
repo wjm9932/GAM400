@@ -15,6 +15,8 @@ namespace Paparazzi
             SelectedData = data;
             panel.SetActive(true);
             image.texture = data.Image;
+
+            SelectedData.Holder.transform.rotation = Quaternion.identity;
         }
 
         public void Close()
@@ -26,6 +28,18 @@ namespace Paparazzi
         {
             SelectedData = null;
             panel.SetActive(false);
+        }
+
+        void Update()
+        {
+            if (Input.GetKey(KeyCode.Q))
+            {
+
+            }
+            else if (Input.GetKey(KeyCode.E))
+            {
+
+            }
         }
     }
 }
