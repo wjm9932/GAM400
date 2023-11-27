@@ -1856,10 +1856,10 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
+    x: 0.15
+    y: 0.15
+    width: 0.7
+    height: 0.7
   near clip plane: 0.01
   far clip plane: 500
   field of view: 70
@@ -1868,7 +1868,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 119
+    m_Bits: 375
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: 8e5712ae691b2224c8283cd49fe37b7e, type: 2}
   m_TargetDisplay: 0
@@ -2069,7 +2069,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2c4aa67977bfe4149ae0dad4459e278b, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2c4aa67977bfe4149ae0dad4459e278b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2414,7 +2414,20 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 2c4aa67977bfe4149ae0dad4459e278b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5928188059427620563}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 2c4aa67977bfe4149ae0dad4459e278b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6662805917068172327}
   m_SourcePrefab: {fileID: 100100000, guid: 2c4aa67977bfe4149ae0dad4459e278b, type: 3}
+--- !u!1 &6906001267054200013 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -5450526443423814944, guid: 2c4aa67977bfe4149ae0dad4459e278b, type: 3}
+  m_PrefabInstance: {fileID: 7749811518189891117}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7038209120761971494 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 729690222700195083, guid: 2c4aa67977bfe4149ae0dad4459e278b, type: 3}
+  m_PrefabInstance: {fileID: 7749811518189891117}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &7443805123408384892 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 2c4aa67977bfe4149ae0dad4459e278b, type: 3}
@@ -2471,7 +2484,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
-  jumpVelocity: 5
+  jumpVelocity: 8
   turnSmoothTime: 0.1
 --- !u!136 &2974543644479620670
 CapsuleCollider:
@@ -2534,7 +2547,17 @@ MonoBehaviour:
   Capture_Clip: {fileID: 8300000, guid: 245965889d0a183438ef3478b27122c0, type: 3}
   magicCamera: {fileID: 788772904071927124}
   uiManager: {fileID: 641355301477058749}
-  models: []
+  models:
+  - {fileID: 6906001267054200013}
+  - {fileID: 7038209120761971494}
+--- !u!81 &6662805917068172327
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7443805123408384892}
+  m_Enabled: 1
 --- !u!4 &7784021149822552518 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2c4aa67977bfe4149ae0dad4459e278b, type: 3}

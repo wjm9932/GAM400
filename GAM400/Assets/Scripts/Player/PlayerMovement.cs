@@ -30,6 +30,7 @@ namespace Paparazzi
             input = GetComponent<PlayerInput>();
             animator = GetComponent<Animator>();
             characterController = GetComponent<CharacterController>();
+            clip_index = 0;
         }
 
         private void FixedUpdate()
@@ -79,7 +80,7 @@ namespace Paparazzi
             {
                 if (IsGrounded() == true)
                 {
-                    //SoundManager.instance.SFXPlay("Land", Land_Clip);
+                    SoundManager.instance.SFXPlay("Land", Land_Clip);
                     animator.SetBool("IsGrounded", true);
                     animator.SetBool("IsJumping", false);
                 }
