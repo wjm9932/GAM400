@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using static Paparazzi.MovableObject;
 
 namespace Paparazzi
 {
@@ -16,12 +13,18 @@ namespace Paparazzi
 
         public float moveDistance = 5f;
         public float moveSpeed = 2f;
+        public Rigidbody rb;
         public MovingType movingtype = MovingType.LEFT;
         private Vector3 originalPosition;
         private Vector3 movementDirection;
+        private GameObject player;
+        private bool attachPlayer;
+        private Vector3 lastPlatformPosition;
 
         void Start()
         {
+            attachPlayer = false;
+            player = GameObject.Find("Main Player");
             originalPosition = transform.position;
             SetMovementDirection();
         }
@@ -35,6 +38,16 @@ namespace Paparazzi
                 originalPosition = transform.position;
                 ReverseDirection();
                 SetMovementDirection();
+            }
+        }
+
+        void FixedUpdate()
+        {
+            if (attachPlayer)
+            {
+                var deltaPosition = gameObject.transform.position - lastPlatformPosition;
+                player.transform.position = player.transform.position + deltaPosition;
+                lastPlatformPosition = gameObject.transform.position;
             }
         }
 
@@ -87,7 +100,7 @@ namespace Paparazzi
                     movingtype = MovingType.DOWN;
                     break;
                 case MovingType.TOP_LEFT:
-                    movingtype = MovingType.BOTTOM_RIGHT; 
+                    movingtype = MovingType.BOTTOM_RIGHT;
                     break;
                 case MovingType.TOP_RIGHT:
                     movingtype = MovingType.BOTTOM_LEFT;
@@ -98,6 +111,23 @@ namespace Paparazzi
                 case MovingType.BOTTOM_RIGHT:
                     movingtype = MovingType.TOP_LEFT;
                     break;
+            }
+        }
+
+        private void OnCollisionEnter(Collision collision)
+        {
+            if (collision.gameObject.tag == "Player")
+            {
+                attachPlayer = true;
+                lastPlatformPosition = gameObject.transform.position;
+            }
+        }
+
+        private void OnCollisionExit(Collision collision)
+        {
+            if (collision.gameObject.tag == "Player")
+            {
+                attachPlayer = false;
             }
         }
     }

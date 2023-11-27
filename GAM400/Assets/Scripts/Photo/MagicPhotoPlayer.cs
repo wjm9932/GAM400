@@ -129,6 +129,9 @@ namespace Paparazzi
                 StopAllCoroutines();
                 StartCoroutine(UpdateBatteryFlag());
                 Battery -= 20.0f;
+
+                if (Battery < 0.0f)
+                    Battery = 0.0f;
             }
 
             if (Input.GetKeyDown(KeyCode.F))

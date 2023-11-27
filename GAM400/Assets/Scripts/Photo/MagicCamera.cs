@@ -23,11 +23,6 @@ namespace Paparazzi
         private Vector3[] currentFarCorners;
         private Plane[] planes;
 
-        public Vector3 LookAt()
-        {
-            return magicCam.transform.forward;
-        }
-
         public void ResetHolders(int maxCount)
         {
             if (holderRoot.transform.childCount > 0)

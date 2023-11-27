@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 namespace Paparazzi
 {
@@ -53,7 +54,7 @@ namespace Paparazzi
             {
                 animator.SetBool("IsMoving", false);
             }
-            
+
             if (currnetVelocityY < -1f && IsGrounded() == false)
             {
                 animator.SetBool("IsGrounded", false);
@@ -79,7 +80,7 @@ namespace Paparazzi
                 Jump();
             }
 
-           
+
 
             if (IsGrounded() == true)
             {
@@ -93,9 +94,9 @@ namespace Paparazzi
             Vector3 moveDir = Vector3.Normalize(transform.forward * moveInput.y + transform.right * moveInput.x);
 
             currnetVelocityY += Time.deltaTime * Physics.gravity.y;
-             
+
             Vector3 velocity = moveDir * targetSpeed;
-           
+
             velocity = AdjustVelocityToSlope(velocity);
             velocity.y += currnetVelocityY;
 
@@ -111,12 +112,12 @@ namespace Paparazzi
         {
             var ray = new Ray(transform.position, Vector3.down);
 
-            if(Physics.Raycast(ray, out RaycastHit hitInfo, 0.2f))
+            if (Physics.Raycast(ray, out RaycastHit hitInfo, 0.2f))
             {
                 var slopeRotation = Quaternion.FromToRotation(Vector3.up, hitInfo.normal);
                 var adjustedVelocity = slopeRotation * velocity;
 
-                if(adjustedVelocity.y < 0)
+                if (adjustedVelocity.y < 0)
                 {
                     return adjustedVelocity;
                 }
