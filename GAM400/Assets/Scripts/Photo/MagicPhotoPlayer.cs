@@ -16,9 +16,9 @@ namespace Paparazzi
         public AudioClip Hold_Clip;
         public AudioClip Capture_Clip;
 
-        public AudioClip Paste_Clip;
-        public AudioClip SelectPic_Clip;
-        public AudioClip Fail_Clip;
+        //public AudioClip Paste_Clip;
+        //public AudioClip SelectPic_Clip;
+        //public AudioClip Fail_Clip;
 
         public float Battery { get; private set; }
         public PhotoAlbumData PhotoAlbumData { get; private set; }

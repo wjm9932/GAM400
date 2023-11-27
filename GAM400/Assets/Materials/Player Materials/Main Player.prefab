@@ -5052,6 +5052,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Open_Clip: {fileID: 8300000, guid: 632b1c41f6a368540970d173af4f782f, type: 3}
   Close_Clip: {fileID: 8300000, guid: e759c65f76c80834abc572593f946008, type: 3}
+  Hold_Clip: {fileID: 8300000, guid: 4c603ded87f71f8458c64fdc9943c86a, type: 3}
   Capture_Clip: {fileID: 8300000, guid: 245965889d0a183438ef3478b27122c0, type: 3}
   magicCamera: {fileID: 788772904071927124}
   uiManager: {fileID: 641355301477058749}
