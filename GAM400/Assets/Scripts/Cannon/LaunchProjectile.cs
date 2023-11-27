@@ -17,9 +17,10 @@ namespace Paparazzi
         private void Update()
         {
             Sec += Time.deltaTime;
-            if(Sec > 1)
+            if (Sec > 1)
             {
-                RandNum = Random.Range(0, 2);
+                RandNum = Random.Range(0, projectile.Count);
+
                 var _projectile = Instantiate(projectile[RandNum], launchPoint.position, launchPoint.rotation);
 
                 Fire_Sound.Play();
