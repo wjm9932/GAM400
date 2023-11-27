@@ -17,7 +17,7 @@ namespace Paparazzi
             Sec += Time.deltaTime;
             if(Sec > 1)
             {
-                RandNum = Random.Range(-1, 2);
+                RandNum = Random.Range(0, 2);
                 var _projectile = Instantiate(projectile[RandNum], launchPoint.position, launchPoint.rotation);
                 _projectile.GetComponent<Rigidbody>().velocity = -launchPoint.right * launchVelocity;
                 Sec = 0;
