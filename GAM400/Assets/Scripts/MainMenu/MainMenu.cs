@@ -29,6 +29,12 @@ namespace Paparazzi
             SoundManager.instance.SFXPlay("Button", Button_Clip);
             SceneManager.LoadScene("Test_PhotoFeature");
         }
+
+        public void OnClickTestLevel()
+        {
+            SoundManager.instance.SFXPlay("Button", Button_Clip);
+            SceneManager.LoadScene("SampleScene");
+        }
         public void OnClickEnd()
         {
             SoundManager.instance.SFXPlay("Button", Button_Clip);

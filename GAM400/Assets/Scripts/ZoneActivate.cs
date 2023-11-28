@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -19,12 +17,13 @@ namespace Paparazzi
         // Update is called once per frame
         void Update()
         {
-        
+            if (Input.GetKeyDown(KeyCode.F1))
+                SceneManager.LoadScene(Scene);
         }
 
         private void OnTriggerEnter(Collider other)
         {
-           if (other.gameObject == Player)
+            if (other.gameObject == Player)
             {
                 SceneManager.LoadScene(Scene);
             }
