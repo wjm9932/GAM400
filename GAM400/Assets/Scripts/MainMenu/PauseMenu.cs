@@ -7,11 +7,14 @@ namespace Paparazzi
     public class PauseMenu : MonoBehaviour
     {
         public GameObject pauseMenu;
+        public GameObject volumeMenu;
         public static bool isPaused;
         public Button ResumeButton;
+        public Button VolumeButton;
         public Button RestartButton;
         public Button GoToMenuButton;
         public Button QuitButton;
+        public Button BackButton;
 
         public AudioClip Button_Clip;
         public AudioClip Pause_Clip;
@@ -21,10 +24,13 @@ namespace Paparazzi
         {
             isPaused = false;
             pauseMenu.SetActive(false);
+            volumeMenu.SetActive(false);
 
             ResumeButton.onClick.AddListener(ResumeGame);
+            VolumeButton.onClick.AddListener(VolumeSettings);
             RestartButton.onClick.AddListener(RestartGame);
             GoToMenuButton.onClick.AddListener(GoToMainMenu);
+            BackButton.onClick.AddListener(Back);
             QuitButton.onClick.AddListener(Quit);
         }
 
@@ -73,6 +79,24 @@ namespace Paparazzi
             Time.timeScale = 1f;
 
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+
+        public void VolumeSettings()
+        {
+            pauseMenu.SetActive(false);
+            volumeMenu.SetActive(true);
+        }
+
+        public void Back()
+        {
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = true;
+
+            volumeMenu.SetActive(false);
+            pauseMenu.SetActive(true);
+            Time.timeScale = 0f;
+            isPaused = true;
+
         }
 
         public void GoToMainMenu()
