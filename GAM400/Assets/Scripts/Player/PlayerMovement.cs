@@ -52,7 +52,6 @@ namespace Paparazzi
 
         void Update()
         {
-            Debug.Log(isJumpEnd);
             UpdateAnimation(input.moveInputForAnim);
 
             if (input.moveInput.magnitude > 0)

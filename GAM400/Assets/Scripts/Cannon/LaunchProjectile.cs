@@ -22,7 +22,8 @@ namespace Paparazzi
                 RandNum = Random.Range(0, projectile.Count);
 
                 var _projectile = Instantiate(projectile[RandNum], launchPoint.position, launchPoint.rotation);
-
+ 
+                Fire_Sound.outputAudioMixerGroup = SoundManager.instance.mixer.FindMatchingGroups("SFX")[0];
                 Fire_Sound.Play();
 
                 _projectile.GetComponent<Rigidbody>().velocity = -launchPoint.right * launchVelocity;

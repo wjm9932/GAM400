@@ -2856,7 +2856,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.30542648, y: -0.00000003276837, z: 0.000000010510568, w: 0.9522157}
+  m_LocalRotation: {x: 0.30542648, y: 0.00000003276837, z: -0.000000010510568, w: 0.9522157}
   m_LocalPosition: {x: 17.17, y: 5.77, z: 22.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3086,7 +3086,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1120818198}
-  m_LocalRotation: {x: 0.30542645, y: -0.000000016384186, z: 0.0000000052552838, w: 0.9522157}
+  m_LocalRotation: {x: 0.30542645, y: 0.000000016384185, z: -0.000000005255283, w: 0.9522157}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4307,9 +4307,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5928188059427620563, guid: a0a8acca2ede50d48b18ba6a2872be13, type: 3}
+      propertyPath: Fail_Clip
+      value: 
+      objectReference: {fileID: 8300000, guid: c78298f1944679648947e7677cce8961, type: 3}
+    - target: {fileID: 5928188059427620563, guid: a0a8acca2ede50d48b18ba6a2872be13, type: 3}
       propertyPath: Hold_Clip
       value: 
       objectReference: {fileID: 8300000, guid: 4c603ded87f71f8458c64fdc9943c86a, type: 3}
+    - target: {fileID: 5928188059427620563, guid: a0a8acca2ede50d48b18ba6a2872be13, type: 3}
+      propertyPath: Paste_Clip
+      value: 
+      objectReference: {fileID: 8300000, guid: c302644c5e29e03479fa24db0db00e41, type: 3}
     - target: {fileID: 5928188059427620563, guid: a0a8acca2ede50d48b18ba6a2872be13, type: 3}
       propertyPath: UnHold_Clip
       value: 
@@ -4318,6 +4326,10 @@ PrefabInstance:
       propertyPath: Capture_Clip
       value: 
       objectReference: {fileID: 8300000, guid: 7f284a9543ef80141a55ca2dc2800e6a, type: 3}
+    - target: {fileID: 5928188059427620563, guid: a0a8acca2ede50d48b18ba6a2872be13, type: 3}
+      propertyPath: SelectPic_Clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 9d189d42dd1e5f8488b23fdd18114150, type: 3}
     - target: {fileID: 7443805123408384892, guid: a0a8acca2ede50d48b18ba6a2872be13, type: 3}
       propertyPath: m_Name
       value: Main Player
@@ -4366,6 +4378,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7988204914617493144, guid: a0a8acca2ede50d48b18ba6a2872be13, type: 3}
+      propertyPath: Flip_Clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 3d729c21c873e5645b120f17ff64fab3, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5205,7 +5221,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1750653430}
-  m_LocalRotation: {x: 0.27631807, y: 1e-45, z: -0, w: 0.96106625}
+  m_LocalRotation: {x: 0.27631807, y: -3e-45, z: 1e-45, w: 0.96106625}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

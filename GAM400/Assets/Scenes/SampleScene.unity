@@ -4329,6 +4329,18 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5928188059427620563, guid: a0a8acca2ede50d48b18ba6a2872be13, type: 3}
+      propertyPath: Fail_Clip
+      value: 
+      objectReference: {fileID: 8300000, guid: c78298f1944679648947e7677cce8961, type: 3}
+    - target: {fileID: 5928188059427620563, guid: a0a8acca2ede50d48b18ba6a2872be13, type: 3}
+      propertyPath: Paste_Clip
+      value: 
+      objectReference: {fileID: 8300000, guid: c302644c5e29e03479fa24db0db00e41, type: 3}
+    - target: {fileID: 5928188059427620563, guid: a0a8acca2ede50d48b18ba6a2872be13, type: 3}
+      propertyPath: SelectPic_Clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 9d189d42dd1e5f8488b23fdd18114150, type: 3}
     - target: {fileID: 6263243792102838972, guid: a0a8acca2ede50d48b18ba6a2872be13, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
@@ -4385,6 +4397,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7988204914617493144, guid: a0a8acca2ede50d48b18ba6a2872be13, type: 3}
+      propertyPath: Flip_Clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 3d729c21c873e5645b120f17ff64fab3, type: 3}
     - target: {fileID: 8278564519408720280, guid: a0a8acca2ede50d48b18ba6a2872be13, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0

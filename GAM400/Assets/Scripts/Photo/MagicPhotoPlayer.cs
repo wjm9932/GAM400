@@ -16,9 +16,9 @@ namespace Paparazzi
         public AudioClip Hold_Clip;
         public AudioClip Capture_Clip;
 
-        //public AudioClip Paste_Clip;
-        //public AudioClip SelectPic_Clip;
-        //public AudioClip Fail_Clip;
+        public AudioClip Paste_Clip;
+        public AudioClip SelectPic_Clip;
+        public AudioClip Fail_Clip;
 
         public float Battery { get; private set; }
         public PhotoAlbumData PhotoAlbumData { get; private set; }
@@ -35,7 +35,7 @@ namespace Paparazzi
 
         public void SelectedImage(PhotoData data)
         {
-            //SoundManager.instance.SFXPlay("SelectPic", SelectPic_Clip);
+            SoundManager.instance.SFXPlay("SelectPic", SelectPic_Clip);
             UpdateCharacterModel(false);
             mode = PhotoMode.ImagePlace;
             uiManager.ClosePhotoAlbumView();
@@ -123,8 +123,14 @@ namespace Paparazzi
                 Cursor.visible = false;
             }
 
-            if (Input.GetMouseButtonDown(1) && canTakePicture)
+            if (Input.GetMouseButtonDown(1))
             {
+                if(!canTakePicture)
+                {
+                    SoundManager.instance.SFXPlay("Fail", Fail_Clip);
+                    return;
+                }
+
                 SoundManager.instance.SFXPlay("Capture", Capture_Clip);
                 uiManager.Capture();
                 var result = magicCamera.GetCaptureResult();
@@ -157,7 +163,7 @@ namespace Paparazzi
 
             if (Input.GetMouseButtonDown(1))
             {
-                //SoundManager.instance.SFXPlay("Paste", Paste_Clip);
+                SoundManager.instance.SFXPlay("Paste", Paste_Clip);
                 var photoData = uiManager.GetCurrentPlacedData();
                 magicCamera.UseImage(photoData);
                 PhotoAlbumData.Remove(photoData.Holder);
@@ -207,7 +213,6 @@ namespace Paparazzi
 
             if (!needUpdateBattery)
             {
-                //SoundManager.instance.SFXPlay("Fail", Fail_Clip);
                 return;
             }
 

@@ -22,6 +22,8 @@ namespace Paparazzi
         private int maxPage = 3;
         private int halfSize => maxCountInPage / 2;
 
+        public AudioClip Flip_Clip;
+
         public void Open(List<PhotoData> albums)
         {
             allData = albums;
@@ -93,7 +95,7 @@ namespace Paparazzi
 
             leftButton.gameObject.SetActive(currentPage != 1);
             rightButton.gameObject.SetActive(currentPage != maxPage && allData.Count > currentPage * maxCountInPage);
-
+            SoundManager.instance.SFXPlay("Filp", Flip_Clip);
             // Reset All
             for (int i = 0; i < halfSize; ++i)
             {

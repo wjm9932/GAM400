@@ -13,7 +13,7 @@ namespace Paparazzi
         [SerializeField] private Button button;
 
         private PhotoData data;
-
+        
         public void Set(PhotoData data)
         {
             this.data = data;
