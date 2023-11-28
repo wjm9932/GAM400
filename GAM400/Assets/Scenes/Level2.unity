@@ -2282,8 +2282,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 110539134}
-  temp: {fileID: 0}
-  Revive_Clip: {fileID: 0}
 --- !u!65 &743570360
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3059,7 +3057,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 370f54da853fbef479402a45cc56b056, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NeedReset: 0
+  PlayerDead: 0
+  PlayingReviveSound: 0
 --- !u!4 &1067459996
 Transform:
   m_ObjectHideFlags: 0
@@ -3968,6 +3967,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7784021149822552518, guid: a0a8acca2ede50d48b18ba6a2872be13, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8278564519408720280, guid: a0a8acca2ede50d48b18ba6a2872be13, type: 3}
+      propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -5935,7 +5938,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_CollideAgainst:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 257
   m_IgnoreTag: 
   m_TransparentLayers:
     serializedVersion: 2
