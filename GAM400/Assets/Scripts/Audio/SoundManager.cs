@@ -28,7 +28,7 @@ namespace Paparazzi
 
         private void OnSceneLoaded(Scene arg0,LoadSceneMode arg1)
         {
-            if (arg0.name == "MainMenu")
+            if (arg0.name == "MainMenu" || arg0.name == "SampleScene")
             {
                 BgSoundPlay(BgList[0]);
             }
