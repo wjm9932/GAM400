@@ -16,9 +16,10 @@ namespace Paparazzi
         public Button GoToMenuButton;
         public Button QuitButton;
         public Button BackButton;
-        public Slider Master;
-        public Slider BGM;
-        public Slider SFX;
+
+        public Slider MasterSlider;
+        public Slider BGMSlider;
+        public Slider SFXSlider;
 
         public AudioClip Button_Clip;
         public AudioClip Pause_Clip;
@@ -38,19 +39,21 @@ namespace Paparazzi
             BackButton.onClick.AddListener(Back);
             QuitButton.onClick.AddListener(Quit);
 
-            SoundManager.instance.mixer.GetFloat("MasterVolume", out var master);
-            Master.value = (master + 80.0f) * 0.01f;
-            Master.onValueChanged.AddListener(SoundManager.instance.MasterVolume);
+            MasterSlider.onValueChanged.AddListener(SoundManager.instance.MasterVolume);
+            BGMSlider.onValueChanged.AddListener(SoundManager.instance.BGSoundVolume);
+            SFXSlider.onValueChanged.AddListener(SoundManager.instance.SFXVolume);
 
-            SoundManager.instance.mixer.GetFloat("BGSoundVolume", out var bgm);
-            BGM.value = (bgm + 80.0f) * 0.01f;
-            BGM.onValueChanged.AddListener(SoundManager.instance.BGSoundVolume);
-
-            SoundManager.instance.mixer.GetFloat("SFXVolume", out var sfx);
-            SFX.value = (sfx + 80.0f) * 0.01f;
-            SFX.onValueChanged.AddListener(SoundManager.instance.SFXVolume);
+            MasterSlider.value = PlayerPrefs.GetFloat(SoundManager.MASTER_KEY,0.5f);
+            BGMSlider.value = PlayerPrefs.GetFloat(SoundManager.MUSIC_KEY, 0.5f);
+            SFXSlider.value = PlayerPrefs.GetFloat(SoundManager.SFX_KEY, 0.5f);
         }
 
+        private void OnDisable()
+        {
+            PlayerPrefs.SetFloat(SoundManager.MASTER_KEY,MasterSlider.value);
+            PlayerPrefs.SetFloat(SoundManager.MUSIC_KEY, BGMSlider.value);
+            PlayerPrefs.SetFloat(SoundManager.SFX_KEY, SFXSlider.value);
+        }
 
         void Update()
         {

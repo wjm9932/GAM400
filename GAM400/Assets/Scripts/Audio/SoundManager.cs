@@ -13,6 +13,13 @@ namespace Paparazzi
         public AudioSource BgSound;
         public List<AudioClip> BgList;
 
+        public const string MASTER_KEY = "masterVolume";
+        public const string MUSIC_KEY = "musicVolume";
+        public const string SFX_KEY = "sfxVolume";
+
+        public const string MIXER_MASTER = "MasterVolume";
+        public const string MIXER_MUSIC = "BGSoundVolume";
+        public const string MIXER_SFX = "SFXVolume";
 
         private void Awake()
         {
@@ -26,6 +33,7 @@ namespace Paparazzi
             {
                 Destroy(gameObject);
             }
+            LoadVolume();
         }
 
         private void OnSceneLoaded(Scene arg0,LoadSceneMode arg1)
@@ -46,17 +54,27 @@ namespace Paparazzi
             
         }
 
+        void LoadVolume()
+        {
+            float masterVolume = PlayerPrefs.GetFloat(MASTER_KEY, 0.5f);
+            float musicVolume = PlayerPrefs.GetFloat(MUSIC_KEY, 0.5f);
+            float sfxVolume = PlayerPrefs.GetFloat(SFX_KEY, 0.5f);
+
+            mixer.SetFloat(MIXER_MASTER, Mathf.Log10(masterVolume) * 20);
+            mixer.SetFloat(MIXER_MUSIC, Mathf.Log10(musicVolume) * 20);
+            mixer.SetFloat(MIXER_SFX, Mathf.Log10(sfxVolume) * 20);
+        }
         public void MasterVolume(float val)
         {
-            mixer.SetFloat("MasterVolume", Mathf.Log10(val) * 20);
+            mixer.SetFloat(MIXER_MASTER, Mathf.Log10(val) * 20);
         }
         public void BGSoundVolume(float val)
         {
-            mixer.SetFloat("BGSoundVolume", Mathf.Log10(val) * 20);
+            mixer.SetFloat(MIXER_MUSIC, Mathf.Log10(val) * 20);
         }
         public void SFXVolume(float val)
         {
-            mixer.SetFloat("SFXVolume", Mathf.Log10(val) * 20);
+            mixer.SetFloat(MIXER_SFX, Mathf.Log10(val) * 20);
         }
 
         public void SFXPlay(string sfxName, AudioClip clip)
