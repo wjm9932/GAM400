@@ -16,6 +16,9 @@ namespace Paparazzi
         public Button GoToMenuButton;
         public Button QuitButton;
         public Button BackButton;
+        public Slider Master;
+        public Slider BGM;
+        public Slider SFX;
 
         public AudioClip Button_Clip;
         public AudioClip Pause_Clip;
@@ -34,6 +37,18 @@ namespace Paparazzi
             GoToMenuButton.onClick.AddListener(GoToMainMenu);
             BackButton.onClick.AddListener(Back);
             QuitButton.onClick.AddListener(Quit);
+
+            SoundManager.instance.mixer.GetFloat("MasterVolume", out var master);
+            Master.value = (master + 80.0f) * 0.01f;
+            Master.onValueChanged.AddListener(SoundManager.instance.MasterVolume);
+
+            SoundManager.instance.mixer.GetFloat("BGSoundVolume", out var bgm);
+            BGM.value = (bgm + 80.0f) * 0.01f;
+            BGM.onValueChanged.AddListener(SoundManager.instance.BGSoundVolume);
+
+            SoundManager.instance.mixer.GetFloat("SFXVolume", out var sfx);
+            SFX.value = (sfx + 80.0f) * 0.01f;
+            SFX.onValueChanged.AddListener(SoundManager.instance.SFXVolume);
         }
 
 

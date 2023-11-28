@@ -208,13 +208,25 @@ MonoBehaviour:
   m_FillRect: {fileID: 1834756114}
   m_HandleRect: {fileID: 1545736640}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 0.0001
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 0.5
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 445942789}
+        m_TargetAssemblyTypeName: Paparazzi.SoundManager, Assembly-CSharp
+        m_MethodName: BGSoundVolume
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &136713530
 GameObject:
   m_ObjectHideFlags: 0
@@ -383,7 +395,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -175.3999, y: 13.599991}
+  m_AnchoredPosition: {x: -149.4, y: 13.599991}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &190982811
@@ -406,7 +418,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Music1
+  m_text: Master
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
@@ -440,7 +452,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -1089,6 +1101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c13eec938fe6764f957a686ebfe3f27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mixer: {fileID: 24100000, guid: 4b70d1913a365834aaf0ce04014993f6, type: 2}
   BgSound: {fileID: 445942788}
   BgList:
   - {fileID: 8300000, guid: 1555836638cd34283a3780a19b58d4c6, type: 3}
@@ -2235,13 +2248,25 @@ MonoBehaviour:
   m_FillRect: {fileID: 1308680954}
   m_HandleRect: {fileID: 1492891517}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 0.0001
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 0.5
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 445942789}
+        m_TargetAssemblyTypeName: Paparazzi.SoundManager, Assembly-CSharp
+        m_MethodName: MasterVolume
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &920468545
 GameObject:
   m_ObjectHideFlags: 0
@@ -2277,7 +2302,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -175.3999, y: 13.599991}
+  m_AnchoredPosition: {x: -149.4, y: 13.599991}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &920468547
@@ -2300,7 +2325,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Music2
+  m_text: 'BGM
 
 '
   m_isRightToLeft: 0
@@ -2336,7 +2361,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -2809,12 +2834,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 1870269622}
   volumeMenu: {fileID: 1085097373}
+  isVolumePaused: 0
   ResumeButton: {fileID: 259264923}
   VolumeButton: {fileID: 1508061388}
   RestartButton: {fileID: 1158105653}
   GoToMenuButton: {fileID: 1759903248}
   QuitButton: {fileID: 1356422494}
   BackButton: {fileID: 738898681}
+  Master: {fileID: 880977379}
+  BGM: {fileID: 124946120}
+  SFX: {fileID: 1958165935}
   Button_Clip: {fileID: 8300000, guid: b0a135c19dbc2cc49909a2a583d55719, type: 3}
   Pause_Clip: {fileID: 8300000, guid: 1bcb2912fae89934ba43c9756aa7d255, type: 3}
   Resume_Clip: {fileID: 8300000, guid: 625ad317b451ec147984e94636d712a6, type: 3}
@@ -3355,7 +3384,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -175.3999, y: 13.599991}
+  m_AnchoredPosition: {x: -149.4, y: 13.599991}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1219476779
@@ -3378,7 +3407,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Music3
+  m_text: 'SFX
 
 '
   m_isRightToLeft: 0
@@ -3414,7 +3443,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -3596,7 +3625,7 @@ RectTransform:
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0.49995, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -3672,7 +3701,7 @@ RectTransform:
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0.49995, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -4025,8 +4054,8 @@ RectTransform:
   m_Father: {fileID: 691447266}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMin: {x: 0.49995, y: 0}
+  m_AnchorMax: {x: 0.49995, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -4169,8 +4198,8 @@ RectTransform:
   m_Father: {fileID: 1565989668}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMin: {x: 0.49995, y: 0}
+  m_AnchorMax: {x: 0.49995, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -4556,8 +4585,8 @@ RectTransform:
   m_Father: {fileID: 541799393}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMin: {x: 0.49995, y: 0}
+  m_AnchorMax: {x: 0.49995, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -5055,7 +5084,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1750653430}
-  m_LocalRotation: {x: 0.27631804, y: 0.000000028642008, z: -0.00000000823492, w: 0.96106625}
+  m_LocalRotation: {x: 0.27631804, y: -1.4997159e-15, z: 1.0751796e-15, w: 0.96106625}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5435,7 +5464,7 @@ RectTransform:
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0.49995, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -6215,13 +6244,25 @@ MonoBehaviour:
   m_FillRect: {fileID: 1355964238}
   m_HandleRect: {fileID: 1419456681}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 0.0001
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 0.5
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 445942789}
+        m_TargetAssemblyTypeName: Paparazzi.SoundManager, Assembly-CSharp
+        m_MethodName: SFXVolume
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1999570218
 GameObject:
   m_ObjectHideFlags: 0

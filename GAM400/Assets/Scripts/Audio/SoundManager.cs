@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 
 namespace Paparazzi
 {
     public class SoundManager : MonoBehaviour
     {
         public static SoundManager instance;
+        public AudioMixer mixer;
         public AudioSource BgSound;
         public List<AudioClip> BgList;
 
@@ -43,10 +45,25 @@ namespace Paparazzi
             }
             
         }
+
+        public void MasterVolume(float val)
+        {
+            mixer.SetFloat("MasterVolume", Mathf.Log10(val) * 20);
+        }
+        public void BGSoundVolume(float val)
+        {
+            mixer.SetFloat("BGSoundVolume", Mathf.Log10(val) * 20);
+        }
+        public void SFXVolume(float val)
+        {
+            mixer.SetFloat("SFXVolume", Mathf.Log10(val) * 20);
+        }
+
         public void SFXPlay(string sfxName, AudioClip clip)
         {
             GameObject sound = new GameObject(sfxName + "Sound");
             AudioSource audiosource = sound.AddComponent<AudioSource>();
+            audiosource.outputAudioMixerGroup = mixer.FindMatchingGroups("SFX")[0];
             audiosource.clip = clip;
             audiosource.Play();
 
@@ -55,6 +72,7 @@ namespace Paparazzi
 
         public void BgSoundPlay(AudioClip clip)
         {
+            BgSound.outputAudioMixerGroup = mixer.FindMatchingGroups("BGSound")[0];
             BgSound.clip = clip;
             BgSound.loop = true;
             BgSound.volume = 0.1f;

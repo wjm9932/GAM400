@@ -2043,6 +2043,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c13eec938fe6764f957a686ebfe3f27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mixer: {fileID: 24100000, guid: 4b70d1913a365834aaf0ce04014993f6, type: 2}
   BgSound: {fileID: 1904218108}
   BgList:
   - {fileID: 8300000, guid: 1555836638cd34283a3780a19b58d4c6, type: 3}
