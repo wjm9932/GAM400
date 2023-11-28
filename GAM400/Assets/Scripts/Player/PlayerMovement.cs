@@ -21,6 +21,9 @@ namespace Paparazzi
         private float currnetVelocityY = 0;
         private float lastGroundedTime;
 
+        private bool isJumpEnd = false;
+        private bool isFalling = false;
+        private bool isJumping = false;
         //public AudioClip Move_Clip;
         public AudioClip Jump_Clip;
         public AudioClip Land_Clip;
@@ -49,6 +52,7 @@ namespace Paparazzi
 
         void Update()
         {
+            Debug.Log(isJumpEnd);
             UpdateAnimation(input.moveInputForAnim);
 
             if (input.moveInput.magnitude > 0)
@@ -64,10 +68,9 @@ namespace Paparazzi
             {
                 animator.SetBool("IsGrounded", false);
                 animator.SetBool("IsFalling", true);
-            }
-            else
-            {
-                animator.SetBool("IsFalling", false);
+                isFalling = true;
+                isJumping = false;
+                isJumpEnd = true;
             }
 
             if (Time.time - lastGroundedTime >= 0.1)
@@ -76,10 +79,22 @@ namespace Paparazzi
                 {
                     SoundManager.instance.SFXPlay("Land", Land_Clip);
                     animator.SetBool("IsGrounded", true);
+                    if (isJumpEnd == true && isFalling == false)
+                    {
+                        animator.SetBool("JumpLanding", true);
+                    }
+                    
                     animator.SetBool("IsJumping", false);
+                    animator.SetBool("IsFalling", false);
+                    isFalling = false;
+                    isJumpEnd = false;
+                    isJumping = false;
                 }
             }
-
+            if(isJumping == true)
+            {
+                animator.SetBool("JumpLanding", false);
+            }
             if (input.isJump)
             {
                 Jump();
@@ -142,6 +157,7 @@ namespace Paparazzi
         {
             if (IsGrounded() == true)
             {
+                isJumping = true;
                 SoundManager.instance.SFXPlay("Jump", Jump_Clip);
                 animator.SetBool("IsGrounded", false);
                 animator.SetBool("IsJumping", true);
@@ -173,6 +189,10 @@ namespace Paparazzi
 
         }
 
+        void EndJump()
+        {
+            isJumpEnd = true;
+        }
         //void Footstep()
         //{
         //    AudioSource.PlayClipAtPoint(Move_Clip, Camera.main.transform.position);
