@@ -22,14 +22,15 @@ namespace Paparazzi
 
         public float Battery { get; private set; }
         public PhotoAlbumData PhotoAlbumData { get; private set; }
+        public int maxCount { get; private set; }
 
+        [SerializeField] private PlayerMovement playerMove;
         [SerializeField] private MagicCamera magicCamera;
         [SerializeField] private MagicCameraUIManager uiManager;
         [SerializeField] private GameObject[] models;
 
         private bool canTakePicture => Battery > 12.5f && PhotoAlbumData.Albumes.Count < 24;
         private bool needUpdateBattery;
-        private int maxCount = 24;
         private PhotoMode mode;
 
         public void SelectedImage(PhotoData data)
@@ -46,6 +47,7 @@ namespace Paparazzi
             mode = PhotoMode.None;
             uiManager.OpenNoneView();
             Battery = 100.0f;
+            maxCount = 24;
             needUpdateBattery = false;
 
             PhotoAlbumData = new PhotoAlbumData();
@@ -81,6 +83,8 @@ namespace Paparazzi
                     Debug.LogWarning("Not made Mode");
                     break;
             }
+
+            playerMove.stopMove = (mode == PhotoMode.Album);
         }
 
         private void UpdateNoneMode()

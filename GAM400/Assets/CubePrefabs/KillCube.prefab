@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2862942115615605797}
   - component: {fileID: 7980952623841328126}
   - component: {fileID: 1005586853897832350}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: KillCube
   m_TagString: Sliceable
   m_Icon: {fileID: 0}
@@ -33,7 +33,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!33 &9035203763731675766
 MeshFilter:
@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 96edcae4b16640445ae8426cbe721382, type: 2}
+  - {fileID: 2100000, guid: d747c1fd682b28949b842056171b1167, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -119,3 +119,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 0}
+  temp: {fileID: 0}
+  Revive_Clip: {fileID: 0}

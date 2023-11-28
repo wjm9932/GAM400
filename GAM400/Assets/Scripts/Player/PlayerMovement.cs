@@ -9,6 +9,7 @@ namespace Paparazzi
         public float speed = 3f;
         public float jumpVelocity = 20f;
         public float turnSmoothTime = 0.1f;
+        public bool stopMove = false;
         public float currentSpeed => new Vector2(characterController.velocity.x, characterController.velocity.z).magnitude;
 
         private Camera followCamera;
@@ -26,6 +27,7 @@ namespace Paparazzi
 
         void Start()
         {
+            stopMove = false;
             followCamera = Camera.main;
             input = GetComponent<PlayerInput>();
             animator = GetComponent<Animator>();
@@ -34,6 +36,9 @@ namespace Paparazzi
 
         private void FixedUpdate()
         {
+            if (stopMove)
+                return;
+
             if (input.moveInput.magnitude > 0.1f)
             {
                 Rotate();

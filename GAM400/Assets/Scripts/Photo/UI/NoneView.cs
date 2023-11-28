@@ -8,6 +8,7 @@ namespace Paparazzi
         [SerializeField] private GameObject panel;
         [SerializeField] private MagicPhotoPlayer photo;
         [SerializeField] private TMP_Text albumCountText;
+        [SerializeField] private GameObject maxObject;
 
         public void Open()
         {
@@ -31,7 +32,16 @@ namespace Paparazzi
             if (!panel.gameObject.activeSelf)
                 return;
 
-            albumCountText.text = string.Format("X {0}", photo.PhotoAlbumData.Albumes.Count);
+            var count = photo.PhotoAlbumData.Albumes.Count;
+            albumCountText.text = string.Format("X {0}", count);
+
+
+            maxObject.SetActive(count >= photo.maxCount);
+
+            if (count >= photo.maxCount)
+                albumCountText.color = Color.red;
+            else
+                albumCountText.color = Color.white;
         }
     }
 }
