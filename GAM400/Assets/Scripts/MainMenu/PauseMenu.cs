@@ -89,13 +89,17 @@ namespace Paparazzi
 
         public void VolumeSettings()
         {
+
             isVolumePaused = true;
+            SoundManager.instance.SFXPlay("Button", Button_Clip);
+
             pauseMenu.SetActive(false);
             volumeMenu.SetActive(true);
         }
 
         public void Back()
         {
+            SoundManager.instance.SFXPlay("Resume", Resume_Clip);
             Cursor.lockState = CursorLockMode.Confined;
             Cursor.visible = true;
 

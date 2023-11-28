@@ -38,6 +38,9 @@ namespace Paparazzi
 
         void Update()
         {
+            if (!needToUpdate)
+                return;
+
             if (Input.GetKeyDown(KeyCode.Q))
             {
                 var angle = albumPanel.gameObject.transform.rotation.eulerAngles.z;

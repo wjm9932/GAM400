@@ -1,4 +1,6 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace Paparazzi
 {
@@ -15,9 +17,15 @@ namespace Paparazzi
         {
             if (LevelManager.Instance.PlayingReviveSound)
             {
-                SoundManager.instance.SFXPlay("Revive", Revive_Clip);
+                StartCoroutine(PlaySound());
                 LevelManager.Instance.PlayingReviveSound = false;
             }
+        }
+
+        IEnumerator PlaySound()
+        {
+            yield return new WaitForSeconds(0.1f);
+            SoundManager.instance.SFXPlay("Revive", Revive_Clip);
         }
     }
 }
