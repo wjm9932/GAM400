@@ -9,6 +9,7 @@ namespace Paparazzi
         public GameObject pauseMenu;
         public GameObject volumeMenu;
         public static bool isPaused;
+        public bool isVolumePaused;
         public Button ResumeButton;
         public Button VolumeButton;
         public Button RestartButton;
@@ -23,6 +24,7 @@ namespace Paparazzi
         void Start()
         {
             isPaused = false;
+            isVolumePaused = false;
             pauseMenu.SetActive(false);
             volumeMenu.SetActive(false);
 
@@ -40,7 +42,11 @@ namespace Paparazzi
 
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                if (isPaused)
+                if(isVolumePaused)
+                {
+                    Back();
+                }
+                else if (isPaused)
                 {
                     ResumeGame();
                 }
@@ -83,6 +89,7 @@ namespace Paparazzi
 
         public void VolumeSettings()
         {
+            isVolumePaused = true;
             pauseMenu.SetActive(false);
             volumeMenu.SetActive(true);
         }
@@ -96,6 +103,7 @@ namespace Paparazzi
             pauseMenu.SetActive(true);
             Time.timeScale = 0f;
             isPaused = true;
+            isVolumePaused = false;
 
         }
 
